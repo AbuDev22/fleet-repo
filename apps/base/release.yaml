@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: todoapi
+  namespace: flux-system
+spec:
+  releaseName: todoapi
+  chart: 
+    spec:
+      chart: charts/todo-api
+      sourceRef:
+        kind: GitRepository
+        name: apps
+  interval: 5m
+  install:
+    remediation:
